@@ -4,5 +4,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app';
 
+import { createStore } from 'redux';
+// import rootReducer from './reducers';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(
+    <Provider>
+        <App/>
+    </Provider>, document.getElementById('app'));

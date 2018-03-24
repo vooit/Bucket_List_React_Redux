@@ -1,5 +1,24 @@
 @import '_color';
+
 body {
   background: $bgcolor;
   color: $color;
+  margin: 0;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 40px;
+  @include linearGradient($header_from, $header_to);
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
