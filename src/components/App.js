@@ -20,8 +20,8 @@ export default class App extends React.Component {
             item: undefined,
             cart: [],
             inCart: 0,
-            total: 10,
-            found: false,
+            total: 0,
+            opened: false,
             status: 'add to cart'
         }
     }
@@ -33,34 +33,38 @@ export default class App extends React.Component {
     }
 
 
+    onCartClick () {
+        this.setState(prevState => {
+            return {
+                opened:!prevState.opened
+            }
+        });
+        console.log(this.state.opened)
+    }
+
     updateTotal(item) {
         console.log(item.price);
-        this.setState({total})
+
+        this.setState({total: 50000})
+
     }
 
     addToCart(item) {
-        // console.log(item.id);
         console.log(item)
         this.state.cart.push(item);
         let arrayCartCopy = this.state.cart;
         let updateInCart = arrayCartCopy.length;
-
         this.setState({
             status: 'added',
             inCart: updateInCart,
-            cart: arrayCartCopy
+            cart: arrayCartCopy,
+            opened:true
         });
-        // console.log(this.state.cart);
     }
 
-    isInCart(item) {
-        return this.state.cart.items.indexOf(item.id) !== -1;
-    }
-
-
-    removeFromCart(elem) {
+    removeFromCart(item) {
         console.log('poopopo');
-        console.log(elem);
+        console.log(item.id);
     }
 
     clearCart() {
@@ -73,7 +77,7 @@ export default class App extends React.Component {
 
 
     render() {
-        const {inCart, cart, status, total} = this.state;
+        const {inCart, cart, status, total, opened} = this.state;
         if (!items.length) {
             return <Loader />
         }
@@ -83,7 +87,9 @@ export default class App extends React.Component {
                     <div className="container flex">
                         <div className="header__logo"><img src={logo}/></div>
                         <Cart
-                            onClearClick={this.clearCart.bind(this)}
+                            opened = {opened}
+                            toggleCart = {this.onCartClick.bind(this)}
+                            onClearClick={this.clearCart.bind(this, cart)}
                             onRemoveClick={this.removeFromCart.bind(this)}
                             total={total}
                             elementNumber={inCart}
@@ -101,8 +107,7 @@ export default class App extends React.Component {
                                 {...item}
                                 status={status}
                                 key={item.id}
-                                onItemClick={this.addToCart.bind(this, item)}/>);
-                        })}
+                                onItemClick={this.addToCart.bind(this, item)}/>);})}
                     </ul>
                 </main>
             </div>

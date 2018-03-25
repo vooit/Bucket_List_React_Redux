@@ -3,7 +3,7 @@ $color: #050505;
 $header_from:#eeeeee;
 $header_to:#dedede;
 $item_bg:#dedede;
-
+$cart_bg:#f7f7f7;
 @mixin linearGradient($top, $bottom){
   background: $top; /* Old browsers */
   background: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
