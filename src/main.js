@@ -2,7 +2,7 @@ import './assets/scss/app.scss';
 console.log('Its working just fine');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import App from './components/App';
 
 import { createStore } from 'redux';
 // import rootReducer from './reducers';

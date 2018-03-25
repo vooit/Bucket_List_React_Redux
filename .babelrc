@@ -8,7 +8,5 @@
     }],
     "stage-0"
   ],
-  "comments": true,
-  "plugins": ["dynamic-import-webpack"]
-
+  "comments": true
 }

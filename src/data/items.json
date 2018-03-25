@@ -4,34 +4,34 @@
     "name": "oddworld: stranger’s wrath",
     "price": "9.99",
     "discount": "-50%",
-    "img": "assets/media/main_baner.jpg"
+    "img": "http://www.greenforskin.pl/data/oddworld_strangers_wrath.jpg"
   },
   {
     "id": 2,
     "name": "chaos on deponia",
     "price": "9.99",
     "discount": "-50%",
-    "img": "assets/media/the_settlers_2_gold_edition.jpg"
+    "img": "http://www.greenforskin.pl/data/chaos_on_deponia.jpg"
   },
   {
     "id": 3,
     "name": "The settlers 2: gold edition",
     "price": "9.99",
     "discount": "-50%",
-    "img": "assets/media/settlers.png"
+    "img": "http://www.greenforskin.pl/data/the_settlers_2_gold_edition.jpg"
   },
   {
     "id": 4,
     "name": "neverwinter nights",
     "price": "4.99",
     "discount": "-50%",
-    "img": "assets/media/neverwinter_03.jpg"
+    "img": "http://www.greenforskin.pl/data/neverwinter_nights.jpg"
   },
   {
     "id": 5,
     "name": "assassin’s creed: director’s cut",
     "price": "9.99",
     "discount": "-50%",
-    "img": "../assets/media/assassins_creed_directors_cut.jpg"
+    "img": "http://www.greenforskin.pl/data/assassins_creed_directors_cut.jpg"
   }
 ]

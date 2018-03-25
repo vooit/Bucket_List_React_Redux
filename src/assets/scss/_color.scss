@@ -2,6 +2,8 @@ $bgcolor: #c2c2c2;
 $color: #050505;
 $header_from:#eeeeee;
 $header_to:#dedede;
+$item_bg:#dedede;
+
 @mixin linearGradient($top, $bottom){
   background: $top; /* Old browsers */
   background: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
