@@ -2,30 +2,32 @@
  * Created by Wojtek on 2018-03-22.
  */
 import React from 'react';
+import {connect} from 'react-redux';
 import logo from '../assets/media/logo.png'
 import banner from '../assets/media/main_baner.jpg'
 import Cart from './Cart';
-import items from '../data/items.json';
 import Item from './Item';
+import {addToCart, removeFromCart} from '../actions/index'
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
-            item: undefined,
-            cart: [],
-            inCart: 0,
-            opened: false,
-            status: 'add to cart'
+            // items: [],
+            // item: undefined,
+            // cart: [],
+            // inCart: 0,
+            opened: false
+            // status: 'add to cart'
         }
     }
 
-    componentDidMount() {
-        this.setState({
-            items: items
-        });
-    }
+    // componentDidMount() {
+    //     console.log(this.props)
+    //     this.setState({
+    //         items: items
+    //     });
+    // }
 
     onCartClick() {
         this.setState(prevState => {
@@ -36,20 +38,24 @@ export default class App extends React.Component {
     }
 
     addToCart(item) {
-        console.log(item);
-        this.state.cart.push(item);
-        let arrayCartCopy = this.state.cart;
-        let updateInCart = arrayCartCopy.length;
-        this.setState({
-            status: 'added',
-            inCart: updateInCart,
-            cart: arrayCartCopy,
-            opened: true
-        });
+        /*
+         console.log(item);
+         this.state.cart.push(item);
+         // let arrayCartCopy = this.state.cart;
+         let arrayCartCopy = [...this.state.cart];
+         let updateInCart = arrayCartCopy.length;
+         this.setState({
+         status: 'added',
+         inCart: updateInCart,
+         cart: arrayCartCopy,
+         opened: true
+         });
+         */
+        this.props.dispatch(addToCart(item))
     }
 
     removeFromCart(item) {
-        console.log(item);
+        this.props.dispatch(removeFromCart(item))
     }
 
     clearCart() {
@@ -61,10 +67,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        const {inCart, cart, status, total, opened} = this.state;
-        if (!items.length) {
-            return <Loader />
-        }
+        const {inCart, cart, status, total, opened} = this.props;
         return (
             <div id="App">
                 <header className="header">
@@ -77,20 +80,22 @@ export default class App extends React.Component {
                             onRemoveClick={this.removeFromCart.bind(this)}
                             total={total}
                             elementNumber={inCart}
-                            cartEl={cart}
-                        />
+                            cartEl={cart}/>
                     </div>
+
                 </header>
                 <main className="container main">
                     <h2 className="main__title">Game of the week:</h2>
                     <div className="main__banner">
                         <img src={banner}/></div>
                     <ul className="items-group">
-                        {this.state.items.map(item => {
+                        {this.props.items.map(item => {
                             return (<Item
                                 {...item}
                                 status={status}
+                                id={item.id}
                                 key={item.id}
+                                onRemoveClick={(item) => this.removeFromCart(item)}
                                 onItemClick={this.addToCart.bind(this, item)}/>);
                         })}
                     </ul>
@@ -99,3 +104,14 @@ export default class App extends React.Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        cart: state.cart,
+        item: state.item,
+        inCart: state.inCart,
+        opened: state.opened,
+        status: state.status,
+        items: state.items
+    }
+}
+export default connect(mapStateToProps)(App)

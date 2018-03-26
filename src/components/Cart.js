@@ -41,15 +41,12 @@ const Cart = (props) => {
                             <li key={index} className="cartItem">
                                 <div className="cartItem__img">
                                     <img src={el.img}/>
-
                                 </div>
                                 <div className="cartItem__copy">
                                     <span>{el.name}</span>
                                     <span>{el.price}</span>
                                     <button onClick={props.onRemoveClick}>remove</button>
                                 </div>
-
-
                             </li>)
                     })}
                 </ul>
