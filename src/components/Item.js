@@ -3,18 +3,22 @@
  */
 import React from 'react';
 
+
 const Item = (props) => {
     return (
         <div className="item">
             <div className="item__image">
                 <img src={props.img}/>
             </div>
-            <div className="buttons">
-                <h2>{props.name}</h2>
-                <button className="item__button"
-                        onClick={props.onItemClick}>
-                    {props.status}
-                </button>
+            <h2>{props.name}</h2>
+            <div className="item__buttons">
+                <span className="btn btn-promo">
+                    {props.discount}
+                </span>
+                <span className="btn btn-default"
+                      onClick={props.onItemClick}>
+                    {props.price}
+                </span>
             </div>
         </div>
     )

@@ -6,25 +6,19 @@ import PropTypes from 'prop-types';
 import cart from '../assets/media/cart.png'
 const Cart = (props) => {
 
-    const el = () => {
+    const updateTotalAmount = () => {
         const prices = props.cartEl.map(el => {
             return (
                 parseFloat(el.price)
             )
         })
-
-        console.log(typeof prices);
-
         const sum = prices.reduce((prev, curr) => {
             return prev + curr
         }, 0)
-        console.log(sum)
-
         return (
             <div>{sum}</div>
         )
     }
-
 
     return (
         <div className="cart">
@@ -34,12 +28,14 @@ const Cart = (props) => {
             </div>
 
             <div className={ props.opened ? "vissible" : "hidden" }>
+
                 <ul className="cart__list">
-                    <div>
-                        <div>{el()}</div>
-                        <p>{props.total}</p>
-                        <button onClick={props.onClearClick}>Clear</button>
+                    <div className="cart__summary">
+                        <div>{updateTotalAmount()}</div>
+                        <button onClick={props.onClearClick} className="button">Clear Cart</button>
                     </div>
+
+
                     {props.cartEl.map((el, index) => {
                         return (
                             <li key={index} className="cartItem">
@@ -51,7 +47,6 @@ const Cart = (props) => {
                                     <span>{el.name}</span>
                                     <span>{el.price}</span>
                                     <button onClick={props.onRemoveClick}>remove</button>
-
                                 </div>
 
 

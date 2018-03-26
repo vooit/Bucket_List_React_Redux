@@ -4,8 +4,14 @@ $header_from:#eeeeee;
 $header_to:#dedede;
 $item_bg:#dedede;
 $cart_bg:#f7f7f7;
+
+$clearBtn_from: #b65ae2;
+$clearBtn_to: #7e53b2;
+
+$btn_border: #a9a9a9;
+
 @mixin linearGradient($top, $bottom){
-  background: $top; /* Old browsers */
+  background: $top;
   background: -moz-linear-gradient(top,  $top 0%, $bottom 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom));
   background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%);
