@@ -2,10 +2,10 @@
  * Created by Wojtek on 2018-03-24.
  */
 import React from 'react';
-import PropTypes from 'prop-types';
-import cart from '../assets/media/cart.png'
-const Cart = (props) => {
+import cart from '../assets/media/cart.png';
+import {connect} from 'react-redux';
 
+const Cart = (props) => {
     const updateTotalAmount = () => {
         const prices = props.cartEl.map(el => {
             return (
@@ -28,14 +28,11 @@ const Cart = (props) => {
             </div>
 
             <div className={ props.opened ? "vissible" : "hidden" }>
-
                 <ul className="cart__list">
                     <div className="cart__summary">
                         <div>{updateTotalAmount()}</div>
                         <button onClick={props.onClearClick} className="button">Clear Cart</button>
                     </div>
-
-
                     {props.cartEl.map((el, index) => {
                         return (
                             <li key={index} className="cartItem">
@@ -45,7 +42,6 @@ const Cart = (props) => {
                                 <div className="cartItem__copy">
                                     <span>{el.name}</span>
                                     <span>{el.price}</span>
-                                    <button onClick={props.onRemoveClick}>remove</button>
                                 </div>
                             </li>)
                     })}
@@ -55,6 +51,10 @@ const Cart = (props) => {
         </div>
     )
 };
+function mapStateToProps(state) {
+    return {
+        opened: state.opened
+    };
+}
 
-
-export default Cart;
+export default connect(mapStateToProps)(Cart);

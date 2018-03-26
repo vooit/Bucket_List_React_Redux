@@ -7,7 +7,7 @@ import logo from '../assets/media/logo.png'
 import banner from '../assets/media/main_baner.jpg'
 import Cart from './Cart';
 import Item from './Item';
-import {addToCart, removeFromCart} from '../actions/index'
+import {addToCart, removeFromCart, toggleCart, clearCart} from '../actions/index'
 
 class App extends React.Component {
     constructor(props) {
@@ -17,40 +17,23 @@ class App extends React.Component {
             // item: undefined,
             // cart: [],
             // inCart: 0,
-            opened: false
+            // opened: false
             // status: 'add to cart'
         }
     }
 
-    // componentDidMount() {
-    //     console.log(this.props)
-    //     this.setState({
-    //         items: items
-    //     });
-    // }
-
     onCartClick() {
+        /*
         this.setState(prevState => {
             return {
                 opened: !prevState.opened
             }
         });
+        */
+        this.props.dispatch(onCartClick())
     }
 
     addToCart(item) {
-        /*
-         console.log(item);
-         this.state.cart.push(item);
-         // let arrayCartCopy = this.state.cart;
-         let arrayCartCopy = [...this.state.cart];
-         let updateInCart = arrayCartCopy.length;
-         this.setState({
-         status: 'added',
-         inCart: updateInCart,
-         cart: arrayCartCopy,
-         opened: true
-         });
-         */
         this.props.dispatch(addToCart(item))
     }
 
@@ -58,16 +41,19 @@ class App extends React.Component {
         this.props.dispatch(removeFromCart(item))
     }
 
-    clearCart() {
+    clearCart(cart) {
+        /*
         this.setState({
             cart: [],
             inCart: 0,
             total: 0
         })
+        */
+        this.props.dispatch(clearCart(cart))
     }
 
     render() {
-        const {inCart, cart, status, total, opened} = this.props;
+        const {inCart, cart, status, opened} = this.props;
         return (
             <div id="App">
                 <header className="header">
@@ -78,7 +64,6 @@ class App extends React.Component {
                             toggleCart={this.onCartClick.bind(this)}
                             onClearClick={this.clearCart.bind(this, cart)}
                             onRemoveClick={this.removeFromCart.bind(this)}
-                            total={total}
                             elementNumber={inCart}
                             cartEl={cart}/>
                     </div>
