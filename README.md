@@ -1,6 +1,3 @@
-# Webpack 3 Boilerplate for beginners
-A basic webpack 3 boilerplate to start with any JS/ES6/React based project.
-<br>
 
 ## Install dependencies
 
