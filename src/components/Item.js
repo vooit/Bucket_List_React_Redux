@@ -16,9 +16,7 @@ const Item = (props) => {
                 <span className="btn btn-promo">
                     {props.discount}
                 </span>
-                {
-                    (!isAdded)? <span className="btn btn-default" onClick={props.onItemClick}>{props.price}</span> : <span className="btn btn-default" onClick={()=> props.onRemoveClick(props.id)}>REMOVE</span>
-                }
+                {(!isAdded)? <span className="btn btn-default" onClick={props.onItemClick}>{props.price}</span> : <span className="btn btn-default" onClick={()=> props.onRemoveClick(props.id)}>REMOVE</span>}
             </div>
         </div>
     )

@@ -8,7 +8,6 @@ import banner from '../assets/media/main_baner.jpg'
 import Cart from './Cart';
 import Item from './Item';
 import {addToCart, removeFromCart, toggleCart, clearCart} from '../actions/index'
-
 class App extends React.Component {
     constructor(props) {
         super(props);

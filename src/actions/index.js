@@ -6,7 +6,6 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const TOGGLE_CART = 'TOGGLE_CART';
 const CLEAR_CART = 'CLEAR_CART';
 
-
 export function addToCart(item) {
     return {
         type: ADD_TO_CART,
@@ -20,14 +19,11 @@ export function removeFromCart(id) {
         id: id
     }
 }
-
 export function toggleCart() {
     return {
         type: TOGGLE_CART
     }
 }
-
-
 
 export function clearCart() {
     return {

@@ -29,9 +29,7 @@ export default function reducer(state = initialState, action) {
         case 'CLEAR_CART':
             console.log('clear')
             return Object.assign({}, state, {cart: []})
-
         default:
             return state
-
     }
 }

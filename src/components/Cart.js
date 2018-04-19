@@ -19,7 +19,6 @@ const Cart = (props) => {
             <span>{sum}</span>
         )
     }
-
     return (
         <div className="cart">
             <div className="cart__wrapper" onClick={props.toggleCart}>
@@ -48,7 +47,6 @@ const Cart = (props) => {
                     })}
                 </ul>
             </div>
-
         </div>
     )
 };
@@ -57,5 +55,4 @@ function mapStateToProps(state) {
         opened: state.opened
     };
 }
-
 export default connect(mapStateToProps)(Cart);
