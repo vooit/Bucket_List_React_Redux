@@ -7,8 +7,8 @@ const initialState = {
     items: items,
     item: undefined,
     cart: [],
-    inCart: 0,
-    opened: false
+    inCart: 0
+    // opened: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -24,8 +24,9 @@ export default function reducer(state = initialState, action) {
             let updatedCart = newCart.filter(item => item.id !== action.id);
             return Object.assign({}, state, {cart: updatedCart, inCart:newCart.length - 1})
 
-        // case 'TOGGLE_CART':
-        //     return Object.assign({}, state, {opened: !state.opened})
+        case 'TOGGLE_CART':
+            console.log(state);
+            return Object.assign({}, state, {opened: !state.opened})
         case 'CLEAR_CART':
             console.log('clear')
             return Object.assign({}, state, {cart: []})

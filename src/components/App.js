@@ -22,14 +22,14 @@ class App extends React.Component {
     }
 
     onCartClick() {
-        /*
+        console.log(this.state)
         this.setState(prevState => {
             return {
                 opened: !prevState.opened
             }
         });
-        */
-        this.props.dispatch(onCartClick())
+
+        // this.props.dispatch(onCartClick())
     }
 
     addToCart(item) {
@@ -41,13 +41,6 @@ class App extends React.Component {
     }
 
     clearCart(cart) {
-        /*
-        this.setState({
-            cart: [],
-            inCart: 0,
-            total: 0
-        })
-        */
         this.props.dispatch(clearCart(cart))
     }
 

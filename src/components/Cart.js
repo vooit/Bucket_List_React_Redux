@@ -20,13 +20,14 @@ const Cart = (props) => {
         )
     }
     return (
+
         <div className="cart">
             <div className="cart__wrapper" onClick={props.toggleCart}>
                 <img src={cart}/>
                 <span className="header__cart--counter">{props.elementNumber}</span>
             </div>
 
-            <div className={ props.opened ? "vissible" : "hidden" }>
+            <div className={ props.elementNumber ? "vissible" : "hidden" }>
                 <ul className="cart__list">
                     <div className="cart__summary">
                         <span className="cart__summary--number">{props.elementNumber} items in cart</span>

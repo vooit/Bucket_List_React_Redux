@@ -58,6 +58,9 @@ img {
       &--price {
         margin-left: 12%;
       }
+      &--number {
+        width: 50%;
+      }
       * {
         text-transform: uppercase;
       }
@@ -97,7 +100,7 @@ img {
         .cartItem__copy {
           width: 75%;
           padding: 0 5px;
-          span:last-of-type{
+          span:last-of-type {
             float: right;
           }
         }
@@ -112,7 +115,7 @@ img {
 }
 
 .hidden {
-  display: none;
+  display: none!important;
 }
 
 .main {
@@ -164,3 +167,25 @@ img {
   }
 }
 
+@media (min-width: 501px) and (max-width: 767px) {
+  .items-group {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    width: 45%;
+    margin:  20px 0;
+  }
+}
+@media (min-width: 300px) and (max-width: 500px) {
+  .items-group {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    width: 90%;
+    margin:  20px 0;
+  }
+}
