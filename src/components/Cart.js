@@ -16,7 +16,7 @@ const Cart = (props) => {
             return prev + curr
         }, 0)
         return (
-            <div>{sum}</div>
+            <span>{sum}</span>
         )
     }
 
@@ -30,8 +30,9 @@ const Cart = (props) => {
             <div className={ props.opened ? "vissible" : "hidden" }>
                 <ul className="cart__list">
                     <div className="cart__summary">
-                        <div>{updateTotalAmount()}</div>
-                        <button onClick={props.onClearClick} className="button">Clear Cart</button>
+                        <span className="cart__summary--number">{props.elementNumber} items in cart</span>
+                        <span className="cart__summary--price">$&nbsp;{updateTotalAmount()}</span>
+                        <button onClick={props.onClearClick} className="button button-blue cart__summary--button">Clear Cart</button>
                     </div>
                     {props.cartEl.map((el, index) => {
                         return (

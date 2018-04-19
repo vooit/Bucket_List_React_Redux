@@ -22,16 +22,16 @@ export default function reducer(state = initialState, action) {
         case 'REMOVE_FROM_CART':
             let newCart = [...state.cart];
             let updatedCart = newCart.filter(item => item.id !== action.id);
-            return Object.assign({}, state, {cart: updatedCart})
+            return Object.assign({}, state, {cart: updatedCart, inCart:newCart.length - 1})
 
-        case 'TOGGLE_CART':
-            return Object.assign({}, state, {opened: !state.opened})
+        // case 'TOGGLE_CART':
+        //     return Object.assign({}, state, {opened: !state.opened})
         case 'CLEAR_CART':
             console.log('clear')
-            // let clearedCart = []
             return Object.assign({}, state, {cart: []})
 
         default:
             return state
+
     }
 }
