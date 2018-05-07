@@ -46,13 +46,38 @@ img {
     }
     &__summary {
       display: flex;
+      justify-content: flex-start;
+
+      border-bottom: 1px solid grey;
+      padding: 5px;
+      &--number, &--price {
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 34px;
+      }
+      &--price {
+        margin-left: 12%;
+      }
+      &--number {
+        width: 50%;
+      }
+      * {
+        text-transform: uppercase;
+      }
+      &--button {
+        margin-left: auto;
+      }
       .button {
         @include linearGradient($clearBtn_from, $clearBtn_to);
         color: white;
+        padding: 8px;
+        width: 140px;
+        outline: none;
+        border-radius: 4px;
       }
     }
     &__list {
-      width: max-content;
+      min-width: 300px;
       position: absolute;
       right: 0;
       top: 40px;
@@ -60,10 +85,27 @@ img {
       background-color: $cart_bg;
       margin: 0;
       padding: 0;
-      li {
+      li.cartItem {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+        * {
+          text-transform: uppercase;
+          font-size: 10px;
+        }
+        .cartItem__img {
+          width: 25%;
+        }
+        .cartItem__copy {
+          width: 75%;
+          padding: 0 5px;
+          span:last-of-type {
+            float: right;
+          }
+        }
       }
+
     }
   }
 }
@@ -73,7 +115,7 @@ img {
 }
 
 .hidden {
-  display: none;
+  display: none!important;
 }
 
 .main {
@@ -82,7 +124,6 @@ img {
     font-size: 18px;
   }
 }
-
 
 .items-group {
   display: flex;
@@ -95,9 +136,10 @@ img {
   background-color: $item_bg;
   box-shadow: 0 6px 26px -7px rgba(0, 0, 0, 1);
   h2 {
-    font-size: 15px;
-    text-transform: capitalize;
+    font-size: 12px;
+    text-transform: uppercase;
     min-height: 36px;
+    margin-left: 10px;
   }
   &__buttons {
     display: flex;
@@ -111,7 +153,7 @@ img {
     .btn-promo {
       background-color: #00905e;
       color: white;
-      margin-right:10px ;
+      margin-right: 10px;
     }
     .btn-default {
       color: #00905e;
@@ -125,3 +167,25 @@ img {
   }
 }
 
+@media (min-width: 501px) and (max-width: 767px) {
+  .items-group {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    width: 45%;
+    margin:  20px 0;
+  }
+}
+@media (min-width: 300px) and (max-width: 500px) {
+  .items-group {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    width: 90%;
+    margin:  20px 0;
+  }
+}

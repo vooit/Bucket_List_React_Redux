@@ -2,9 +2,10 @@
  * Created by Wojtek on 2018-03-24.
  */
 import React from 'react';
-
+import {connect} from 'react-redux';
 
 const Item = (props) => {
+    const isAdded = props.cart.find((item)=> item.id == props.id);
     return (
         <div className="item">
             <div className="item__image">
@@ -15,12 +16,16 @@ const Item = (props) => {
                 <span className="btn btn-promo">
                     {props.discount}
                 </span>
-                <span className="btn btn-default"
-                      onClick={props.onItemClick}>
-                    {props.price}
-                </span>
+                {(!isAdded)? <span className="btn btn-default" onClick={props.onItemClick}>{props.price}</span> : <span className="btn btn-default" onClick={()=> props.onRemoveClick(props.id)}>REMOVE</span>}
             </div>
         </div>
     )
 };
-export default Item;
+
+function mapStateToProps(state) {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps)(Item);
